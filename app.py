@@ -1,4 +1,5 @@
 import streamlit as st
+import datetime
 import shelve
 from generate_responses import generate_response_action
 def User():
@@ -63,7 +64,11 @@ def save_chat_history(messages):
 if "messages" not in st.session_state:
     st.session_state.messages = load_chat_history()
 
-
+def delete_old_messages(messages):
+    current_time = datetime.datetime.now()
+    one_day_ago = current_time - datetime.timedelta(days=1)
+    updated_messages = [msg for msg in messages if msg.get("timestamp", one_day_ago) > one_day_ago]
+    return updated_messages
 
 def Assistance():
     st.title("Mental Health Support Chatbot")
