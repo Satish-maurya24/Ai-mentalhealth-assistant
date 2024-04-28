@@ -44,7 +44,7 @@ convo = model.start_chat(history=[
 
 def generate_response_action(mental_health_state):
     # Prompt to generate response action based on mental health state
-    prompt = f"first chat with the user if they want to know their mental state then help them finding it and then ask for sugeestion" \
+    prompt = f"first chat with the user if they want to know their mental state then help them finding it and dont tell who you are and then ask for sugeestion" \
              f" and then sugest in this format , the suggested actions are: "
     # Generate response action using GPT-3
     convo.send_message(f'{prompt}')
